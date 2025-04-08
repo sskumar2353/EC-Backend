@@ -2,12 +2,12 @@
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: 'nozomi.proxy.rlwy.net',
-  port: 55081,
-  user: 'root',
-  password: 'bKPlyDgMKLBybmMvtasOCupiVTEvpHPl',
-  database: 'railway'
-});
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+}).promise();
 
 connection.connect((err) => {
   if (err) {
