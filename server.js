@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require('dotenv').config(); // This should be line 1
 console.log('Environment variables loaded:', process.env.EMAIL_USER ? 'Yes' : 'No'); // For debugging
-
+const pool  = require("./db")
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -14,16 +14,16 @@ app.use(express.json());
 
 
 
-const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
+// const pool = mysql.createPool({
+//     host: process.env.DB_HOST,
+//     port: process.env.DB_PORT,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME,
+//     waitForConnections: true,
+//     connectionLimit: 10,
+//     queueLimit: 0
+// });
 
 app.get("/api/test-db", async (req, res) => {
     try {
